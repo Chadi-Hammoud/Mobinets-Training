@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  
+  <style>
+  .custom-popup {
+    background-color: #aaa;
+    padding: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <div id="map" style="width: 1600px; height:600px;"></div>
+  <script>
+    var map = L.map('map').setView([34.43504, 35.833183], 100);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+	var customIcon = L.icon({
+    iconUrl: 'https://png.pngtree.com/png-clipart/20210116/ourmid/pngtree-3d-social-media-icon-location-creative-png-image_2752103.jpg', // URL to your custom marker icon
+    iconSize: [50, 50], // Width and height of the icon
+	});
+	
+	<!-- var mobinetsMarker = L.marker([34.43504, 35.833183], { icon: customIcon }).addTo(map);-->
+	var map = L.map('map').setView([latitude, longitude], zoom);
+
+var threeDCanvas = L.divIcon({
+    className: 'three-d-canvas',
+    iconSize: [10, 20] // Size of the placeholder
+});
+
+var mobinetsMarker = L.marker([latitude, longitude], {
+    icon: threeDCanvas,
+    draggable: false
+}).addTo(map);
+
+	mobinetsMarker.bindPopup("<div class='custom-popup'><b>Mobinets</b><br><a href ='https://www.mobinets.com/'>Explore the company!</a></div>");
+	mobinetsMarker.on('click', function() {
+    mobinetsMarker.openPopup();
+	
+	
+	
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+var renderer = new THREE.WebGLRenderer();
+
+// ... Create your 3D objects and add them to the scene ...
+
+// Append the 3D renderer's canvas to the placeholder
+var threeDCanvasElement = renderer.domElement;
+document.querySelector('.three-d-canvas').appendChild(threeDCanvasElement);
+
+
+
+
+});
+
+  </script>
+</body>
+</html>

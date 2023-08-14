@@ -16,8 +16,8 @@
   });
   var stage4 = new Konva.Stage({
     container: 'container4',   // id of container <div>
-    width: 200,
-    height: 200
+    width: 1000,
+    height: 400
   });
   
   

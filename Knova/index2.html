@@ -1,0 +1,49 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Knova 2D</title>
+        <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+
+    </head>
+    <style>
+        .style1{
+            border-color: black;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .flex-container{
+            display: flex;
+        }
+        .space{
+            width: auto;
+            height: 20px;
+        }
+        footer{
+            display: flex;
+            justify-content: right;
+        }
+    </style>
+    <body>
+        <center><h1>Simple Shapes</h1></center>
+        <div class="flex-container style1">
+            <div id="container1"></div>
+            <div id="container2"></div>
+            <div id="container3"></div>
+        </div>
+        If you want to see a real example to how we can use knovajs 
+            <a href="./interactive-buildingmap.html">click here</h1></a> 
+
+        <div class="space"></div>
+        <center><h1>Dragged shapes</h1></center>
+        <div class="style1" id="container4"></div>
+
+        <footer>
+            <p>Author: Chadi Hammoud<br>
+                <a href="mailto:chadihammoud96@gmail.com">chadihammoud96@gmail.com</a></p>
+        </footer>
+
+        <script src="./main.js"></script>
+
+    </body>
+</html>

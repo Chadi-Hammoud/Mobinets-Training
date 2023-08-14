@@ -17,7 +17,7 @@
   var stage4 = new Konva.Stage({
     container: 'container4',   // id of container <div>
     width: 1000,
-    height: 400
+    height: 650
   });
   
   
@@ -212,3 +212,6 @@ var tempLayer = new Konva.Layer();
   layer2.draw();
   layer3.draw();
   layer4.draw();
+
+
+  

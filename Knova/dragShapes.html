@@ -1,0 +1,222 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Knova 2D</title>
+        <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+
+    </head>
+    <style>
+        .style1{
+            border-color: black;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .flex-container{
+            display: flex;
+        }
+        .space{
+            width: auto;
+            height: 20px;
+        }
+        footer{
+            display: flex;
+            justify-content: right;
+        }
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+        background-color: #111;
+        }
+
+        .active {
+        background-color: #04AA6D;
+        }
+</style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./simpleShapes.html">Simple shapes</a></li>
+            <li><a class="active" href="./dragShapes.html">Drag Event</a></li>
+            <li><a href="./interactive-buildingmap.html">Real Example</a></li>
+        </ul>
+        <div class="space"></div>
+        <center><h1>Dragged shapes</h1></center>
+        <div class="style1" id="container4"></div>
+
+        <footer>
+            <p>Author: Chadi Hammoud<br>
+                <a href="mailto:chadihammoud96@gmail.com">chadihammoud96@gmail.com</a></p>
+        </footer>
+
+        <script>
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            var stage4 = new Konva.Stage({
+                container: 'container4',   // id of container <div>
+                width: width,
+                height: height
+            });
+            var layer4 = new Konva.Layer();
+
+            var pentagon = new Konva.RegularPolygon({
+            // x: stage.width() / 3,
+            // y: stage.height() / 3,
+            x:100,
+            y:100,
+            sides: 5,
+            radius: 70,
+            fill: 'red',
+            stroke: 'black',
+            strokeWidth: 4,
+            shadowOffsetX : 20,
+            shadowOffsetY : 25,
+            shadowBlur : 40,
+            opacity : 0.5
+        });
+
+
+        var tempLayer = new Konva.Layer();
+            stage4.add(tempLayer);
+
+            var text = new Konva.Text({
+                fill: 'black',
+            });
+            layer4.add(text);
+
+            var star;
+            for (var i = 0; i < 10; i++) {
+                star = new Konva.Star({
+                x: stage4.width() * Math.random(),
+                y: stage4.height() * Math.random(),
+                fill: 'blue',
+                numPoints: 10,
+                innerRadius: 20,
+                outerRadius: 25,
+                draggable: true,
+                name: 'star ' + i,
+                shadowOffsetX: 5,
+                shadowOffsetY: 5,
+                });
+                layer4.add(star);
+            }
+
+            stage4.on('dragstart', function (e) {
+                e.target.moveTo(tempLayer);
+                layer4.draw();
+                text.text('Moving ' + e.target.name());
+            });
+
+            var previousShape;
+            stage4.on('dragmove', function (evt) {
+                var pos = stage4.getPointerPosition();
+                var shape = layer4.getIntersection(pos);
+                if (previousShape && shape) {
+                if (previousShape !== shape) {
+                    // leave from old targer
+                    previousShape.fire(
+                    'dragleave',
+                    {
+                        evt: evt.evt,
+                    },
+                    true
+                    );
+
+                    // enter new targer
+                    shape.fire(
+                    'dragenter',
+                    {
+                        evt: evt.evt,
+                    },
+                    true
+                    );
+                    previousShape = shape;
+                } else {
+                    previousShape.fire(
+                    'dragover',
+                    {
+                        evt: evt.evt,
+                    },
+                    true
+                    );
+                }
+                } else if (!previousShape && shape) {
+                previousShape = shape;
+                shape.fire(
+                    'dragenter',
+                    {
+                    evt: evt.evt,
+                    },
+                    true
+                );
+                } else if (previousShape && !shape) {
+                previousShape.fire(
+                    'dragleave',
+                    {
+                    evt: evt.evt,
+                    },
+                    true
+                );
+                previousShape = undefined;
+                }
+            });
+            stage4.on('dragend', function (e) {
+                var pos = stage4.getPointerPosition();
+                var shape = layer4.getIntersection(pos);
+                if (shape) {
+                previousShape.fire(
+                    'drop',
+                    {
+                    evt: e.evt,
+                    },
+                    true
+                );
+                }
+                previousShape = undefined;
+                e.target.moveTo(layer4);
+            });
+
+            stage4.on('dragenter', function (e) {
+                e.target.fill('green');
+                text.text('dragenter ' + e.target.name());
+            });
+
+            stage4.on('dragleave', function (e) {
+                e.target.fill('blue');
+                text.text('dragleave ' + e.target.name());
+            });
+
+            stage4.on('dragover', function (e) {
+                text.text('dragover ' + e.target.name());
+            });
+
+            stage4.on('drop', function (e) {
+                e.target.fill('red');
+                text.text('drop ' + e.target.name());
+            });
+            stage4.add(layer4);
+        
+        </script>
+        <!-- <script src="./main.js"></script> -->
+
+    </body>
+</html>

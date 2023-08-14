@@ -1,0 +1,154 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Knova 2D</title>
+        <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+
+    </head>
+    <style>
+        .style1{
+            border-color: black;
+            border-width: 1px;
+            border-style: solid;
+        }
+        .flex-container{
+            display: flex;
+        }
+        .space{
+            width: auto;
+            height: 20px;
+        }
+        footer{
+            display: flex;
+            justify-content: right;
+        }
+        ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        }
+
+        li {
+        float: left;
+        }
+
+        li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+        background-color: #111;
+        }
+
+        .active {
+        background-color: #04AA6D;
+        }
+</style>
+    <body>
+        <ul>
+            <li><a  href="./index.html">Home</a></li>
+            <li><a class="active" href="./simpleShapes.html">Simple shapes</a></li>
+            <li><a href="./dragShapes.html">Drag Event</a></li>
+            <li><a  href="./interactive-buildingmap.html">Real Example</a></li>
+        </ul>
+        <center><h1>Simple Shapes</h1></center>
+        <div class="flex-container style1">
+            <div id="container1"></div>
+            <div id="container2"></div>
+            <div id="container3"></div>
+        </div>
+        <footer>
+            <p>Author: Chadi Hammoud<br>
+                <a href="mailto:chadihammoud96@gmail.com">chadihammoud96@gmail.com</a></p>
+        </footer>
+
+        <!-- <script src="./main.js"></script> -->
+        <script>
+             // first we need to create a stage
+ var stage1 = new Konva.Stage({
+    container: 'container1',   // id of container <div>
+    width: 200,
+    height: 200
+  });
+  var stage2 = new Konva.Stage({
+    container: 'container2',   // id of container <div>
+    width: 200,
+    height: 200
+  });
+  var stage3 = new Konva.Stage({
+    container: 'container3',   // id of container <div>
+    width: 200,
+    height: 200
+  });
+
+    // then create layer4
+    var layer1 = new Konva.Layer();
+  var layer2 = new Konva.Layer();
+  var layer3 = new Konva.Layer();
+
+ // create our shape
+ var circle = new Konva.Circle({
+    x: stage2.width() / 2,
+    y: stage2.height() / 2,
+    radius: 70,
+    fill: 'red',
+    stroke: 'black',
+    strokeWidth: 4
+  });
+
+  var triangle = new Konva.Shape({
+    sceneFunc: function(context) {
+      context.beginPath();
+      context.moveTo(120, 50);
+      context.lineTo(200, 80);
+      context.quadraticCurveTo(150, 100, 200, 170);
+      context.closePath();
+
+      // special Konva.js method
+      context.fillStrokeShape(this);
+    },
+    fill: '#00D2FF',
+    stroke: 'lightblue',
+    strokeWidth: 4,
+    
+});
+
+var pentagon = new Konva.RegularPolygon({
+    // x: stage.width() / 3,
+    // y: stage.height() / 3,
+    x:100,
+    y:100,
+    sides: 5,
+    radius: 70,
+    fill: 'red',
+    stroke: 'black',
+    strokeWidth: 4,
+    shadowOffsetX : 20,
+    shadowOffsetY : 25,
+    shadowBlur : 40,
+    opacity : 0.5
+});
+
+layer1.add(triangle);
+  layer2.add(circle);
+  layer3.add(pentagon);
+
+  stage1.add(layer1);
+  stage2.add(layer2);
+  stage3.add(layer3);
+
+//   layer1.draw();
+//   layer2.draw();
+//   layer3.draw();
+
+        </script>
+
+    </body>
+</html>

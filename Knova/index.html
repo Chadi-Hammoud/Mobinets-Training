@@ -1,47 +1,56 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Knova 2D</title>
         <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+        <style>
+                ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                }
 
+                li {
+                float: left;
+                }
+
+                li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+
+                li a:hover:not(.active) {
+                background-color: #111;
+                }
+
+                .active {
+                background-color: #04AA6D;
+                }
+                img{
+                    width: 200px;
+                    height: 200px;
+                    justify-content:center;
+                    align-items: center;
+                    margin-top: 15%;
+                    margin-left: 40%;
+                }
+        </style>
     </head>
-    <style>
-        .style1{
-            border-color: black;
-            border-width: 1px;
-            border-style: solid;
-        }
-        .flex-container{
-            display: flex;
-        }
-        .space{
-            width: auto;
-            height: 20px;
-        }
-        footer{
-            display: flex;
-            justify-content: right;
-        }
-    </style>
     <body>
-        <center><h1>Simple Shapes</h1></center>
-        <div class="flex-container style1">
-            <div id="container1"></div>
-            <div id="container2"></div>
-            <div id="container3"></div>
-        </div>
 
-        <div class="space"></div>
-        <center><h1>Dragged shapes</h1></center>
-        <div class="style1" id="container4"></div>
+        <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="./simpleShapes.html">Simple shapes</a></li>
+            <li><a href="./dragShapes.html">Drag Event</a></li>
+            <li><a  href="./interactive-buildingmap.html">Real Example</a></li>
+        </ul>
 
-        <footer>
-            <p>Author: Chadi Hammoud<br>
-                <a href="mailto:chadihammoud96@gmail.com">chadihammoud96@gmail.com</a></p>
-        </footer>
-
-        <script src="./main.js"></script>
+        <img src="./assets/logo.png" alt="Logo"/>
 
     </body>
 </html>

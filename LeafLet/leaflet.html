@@ -1,28 +1,34 @@
 <html>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Esri Leaflet Vector Custom Vector Tile Layer</title>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Esri Leaflet Vector Custom Vector Tile Layer</title>
 
-  <!-- Load Leaflet from CDN or local node_modules -->
-  <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
-  <script src="../node_modules/leaflet/dist/leaflet.js"></script>
+        <link rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin />
 
-  <!--
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin></script>
+
+        <!--
     Load maplibre-gl from CDN or local node_modules for dev/debug purposes because it is not bundled in Esri Leaflet Vector's dev/debug code
     (note also that loading maplibre-gl.css is not necessary)
   -->
-  <script src="../node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
+        <script src="../node_modules/maplibre-gl/dist/maplibre-gl.js"></script>
 
-  <!-- Load Esri Leaflet and Esri Leaflet Vector plugin dev/debug version -->
-  <script src="../node_modules/esri-leaflet/dist/esri-leaflet.js"></script>
-  <script src="../dist/esri-leaflet-vector-debug.js"></script>
+        <!-- Load Esri Leaflet and Esri Leaflet Vector plugin dev/debug version -->
+        <script src="../node_modules/esri-leaflet/dist/esri-leaflet.js"></script>
+        <script src="../dist/esri-leaflet-vector-debug.js"></script>
 
-  <!-- But note that maplibre-gl is bundled in Esri Leaflet Vector's production code -->
-  <!-- <script src="../dist/esri-leaflet-vector.js"></script> -->
+        <!-- But note that maplibre-gl is bundled in Esri Leaflet Vector's production code -->
+        <!-- <script src="../dist/esri-leaflet-vector.js"></script> -->
 
-  <style>
+        <style>
     html,
     body {
       margin: 0;
@@ -32,25 +38,46 @@
       width: 100%;
       height: 100%;
     }
-  </style>
-</head>
+    </style>
+    </head>
 
-<body>
-  <div id="map"></div>
+    <body>
+        <div id="map"></div>
 
-  <script>
+        <script>
     console.table({
       "L.version": L.version,
       "L.esri.VERSION": L.esri.VERSION,
       "L.esri.Vector.VERSION": L.esri.Vector.VERSION,
       "maplibregl.version": maplibregl.version
     });
+    
 
-    var map = L.map("map", {}).setView([34.0739, -118.2400], 15);
 
-    // should load and show contours around Dodger Stadium
-    L.esri.Vector.vectorTileLayer("18d32a699af64bfba4e78eba5a4dd705").addTo(map);
+    var map = L.map('map').setView([34.0739, -118.2400], 15);
+    // var map = L.map("map", {}).setView([34.0739, -118.2400], 15);
+
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+    var circle = L.circle([37.07, -110.2400], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+}).addTo(map);
+
+
+var polygon = L.polygon([
+    [37.07, -110.2400],
+    [37.17, -110.3400],
+    [37.27, -110.4400]
+]).addTo(map);
+
   </script>
-</body>
+    </body>
 
 </html>

@@ -27,7 +27,6 @@
                 li a:hover:not(.active) {
                 background-color: #111;
                 }
-
                 .active {
                 background-color: #04AA6D;
                 }
@@ -39,6 +38,7 @@
                     margin-top: 15%;
                     margin-left: 40%;
                 }
+                
         </style>
     </head>
     <body>
@@ -47,10 +47,108 @@
             <li><a class="active" href="#">Home</a></li>
             <li><a href="./simpleShapes.html">Simple shapes</a></li>
             <li><a href="./dragShapes.html">Drag Event</a></li>
-            <li><a  href="./interactive-buildingmap.html">Real Example</a></li>
+            <li><a href="./monile.html">mobile</a></li>
+            <li><a href="./interactive-buildingmap.html">Real Example</a></li>
+            
         </ul>
+        
 
-        <img src="./assets/logo.png" alt="Logo"/>
+        <!-- <img src="./assets/logo.png" alt="Logo" /> -->
+        <div id="main_container"></div>
+        <script>
+            var main_Stage  = new Konva.Stage({
+                container : 'main_container',
+                width: window.innerWidth, 
+                height: window.innerHeight
+            });
+
+            var main_Layer = new Konva.Layer();
+
+            var circle = new Konva.Circle({
+                x: main_Stage.width() / 2,
+                y: main_Stage.height() / 2,
+                radius: 200,
+                fill: '#3f6fe8',
+                stroke: 'lightgray',
+                strokeWidth: 4,
+                draggable: true,
+                opacity: 0.9,
+                shadowColor: 'darkgray',
+                shadowBlur: 200,
+                shadowOffset: { x: 0, y: 0 },
+                shadowOpacity: 1,
+            });
+            
+      
+
+            var simpleText = new Konva.Text({
+                x: main_Stage.width() /2.5,
+                y: 100,
+                text: 'K',
+                fontSize: 500,
+                fontFamily: 'Calibri',
+                fill: '#ebeef7',
+                shadowColor: 'black',
+                shadowBlur: 150,
+                shadowOffset: { x: 10, y: 10 },
+                shadowOpacity: 1,
+                // visible: true,
+                globalCompositeOperation: 'xor',
+
+            });
+
+
+            main_Layer.add(circle);
+            main_Layer.add(simpleText);
+            main_Stage.add(main_Layer);
+            main_Layer.draw();
+
+
+
+            //Binding events
+            function writeMessage(message) {
+              console.log(message);;
+            } 
+
+
+
+
+           
+            //Events
+            circle.on('mouseover', function (){
+                this.opacity(1);
+                this.fill('orange')
+                simpleText.fill('black');
+                setTimeout(10000);
+                simpleText.fill('darkblue');
+                main_Stage.container().style.cursor = 'pointer';
+                writeMessage('Mouseout circle');
+                
+            });
+
+            simpleText.on('mouseover',function () {
+                this.fill('darkblue');
+                setTimeout(1000);
+                this.fill('gray');
+                // var mousePos = main_Stage.getPointerPosition();
+                // writeMessage('x: ' + mousePos.x + ', y: ' + mousePos.y);
+
+            })
+
+            simpleText.on('mousemove', function () {
+                var mousePos = main_Stage.getPointerPosition();
+                writeMessage('simpleText[ x: ' + mousePos.x + ', y: ' + mousePos.y+']');
+            });
+
+            circle.on('mouseout', function () {
+                this.opacity(0.9);
+                setTimeout(1000);
+                this.fill('#3f6fe8');
+                simpleText.fill('darkblue')
+            });
+
+
+        </script>
 
     </body>
 </html>

@@ -49,9 +49,8 @@
             <li><a href="./dragShapes.html">Drag Event</a></li>
             <li><a href="./mobile.html">mobile</a></li>
             <li><a href="./interactive-buildingmap.html">Real Example</a></li>
-            
+
         </ul>
-        
 
         <!-- <img src="./assets/logo.png" alt="Logo" /> -->
         <div id="main_container"></div>
@@ -139,6 +138,22 @@
                 var mousePos = main_Stage.getPointerPosition();
                 writeMessage('simpleText[ x: ' + mousePos.x + ', y: ' + mousePos.y+']');
             });
+             /*
+       * mousedown and touchstart are desktop and
+       * mobile equivalents so they are often times
+       * used together
+       */
+        circle.on('mousedown touchstart', function () {
+            console.log('Mousedown or touchstart');
+        });
+      /*
+       * mouseup and touchend are desktop and
+       * mobile equivalents so they are often times
+       * used together
+       */
+      circle.on('mouseup touchend', function () {
+        writeMessage('Mouseup or touchend');
+      });
 
             circle.on('mouseout', function () {
                 this.opacity(0.9);
@@ -146,6 +161,9 @@
                 this.fill('#3f6fe8');
                 simpleText.fill('darkblue')
             });
+
+    // simulate click on circle
+    // circle.fire('click');
 
 
         </script>

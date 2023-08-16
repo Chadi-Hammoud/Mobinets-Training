@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Knova 2D</title>
+        <script src="https://unpkg.com/konva@9/konva.min.js"></script>
+        <style>
+                ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                }
+
+                li {
+                float: left;
+                }
+
+                li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+
+                li a:hover:not(.active) {
+                background-color: #111;
+                }
+                .active {
+                background-color: #04AA6D;
+                }
+                img{
+                    width: 200px;
+                    height: 200px;
+                    justify-content:center;
+                    align-items: center;
+                    margin-top: 15%;
+                    margin-left: 40%;
+                }
+                #container{
+                    /* margin-top: 100px; */
+                    margin-left: 100px;
+                    /* padding-top: 100PX; */
+                }
+                
+        </style>
+    </head>
+    <body>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="./simpleShapes.html">Simple shapes</a></li>
+            <li><a href="./dragShapes.html">Drag Event</a></li>
+            <li><a href="./mobile.html">mobile</a></li>
+            <li><a href="./interactive-buildingmap.html">Real Example</a></li>
+            <li><a class="active" href="./simpleAnimation.html">Animation
+                    Example</a></li>
+
+        </ul>
+        <div style="height: 100px;"></div>
+        <div id="container"></div>
+        <div id="container1"></div>
+        <script>
+        const stage = new Konva.Stage({
+            container: 'container',
+            width: innerWidth/2,
+            height: innerHeight/2,
+        });
+        const layer = new Konva.Layer();
+        stage.add(layer);
+
+
+        const stage1 = new Konva.Stage({
+            container: 'container1',
+            width: innerWidth/2,
+            height: innerHeight/2,
+        });
+        const layer1 = new Konva.Layer();
+        stage1.add(layer1);
+
+
+        const rect = new Konva.Rect({
+            x: 100,
+            y: 100,
+            width: 50,
+            height: 50,
+            fill: 'red',
+            stroke: 'black',
+  strokeWidth: 5
+        });
+
+
+        // const animate = () => {
+        //     rect.rotate(1); // Rotate the rectangle by 1 degree
+        //     layer1.draw(); // Redraw the layer to reflect the changes
+        //     requestAnimationFrame(animate); // Repeat the animation
+        // };
+
+
+        // animate();
+
+
+        // const tween = new Konva.Tween({
+        //     node:rect,
+        //     x:400,
+        //     duration:3,
+        //     opacity:0.2,
+        //     rotation: -360,
+        //     yoyo:true,
+        // })
+        // tween.play();
+
+
+        var period = 2000;
+
+        var anim = new Konva.Animation(function (frame) {
+        var scale = Math.sin((frame.time * 2 * Math.PI) / period) + 0.001;
+        // scale x and y
+        // rect.scale({ x: scale, y: scale });
+        // scale only y
+        rect.scaleY(scale);
+        // scale only x
+        // rect.scaleX(scale);
+      }, layer1);
+
+      anim.start();
+
+
+        var velocity = 50;
+
+        var anim = new Konva.Animation(function(frame) {
+        var dist = velocity * (frame.timeDiff / 1000);
+        var scale = Math.sin((frame.time * 2 * Math.PI) / period) + 0.001;
+        rect.move({x: dist, y: 0});
+        rect.scale({ x: scale, y: scale });
+        }, layer);
+
+        anim.start();
+
+
+   layer.add(rect);
+//    layer1.add(rect);
+
+
+        </script>
+
+    </body>
+</html>

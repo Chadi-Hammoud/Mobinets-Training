@@ -49,6 +49,8 @@
             <li><a href="./dragShapes.html">Drag Event</a></li>
             <li><a href="./mobile.html">mobile</a></li>
             <li><a href="./interactive-buildingmap.html">Real Example</a></li>
+            <li><a href="./simpleAnimation.html">Animation Example</a></li>
+
 
         </ul>
 
@@ -93,6 +95,7 @@
                 shadowOpacity: 1,
                 // visible: true,
                 globalCompositeOperation: 'xor',
+                
 
             });
 
@@ -122,6 +125,7 @@
                 simpleText.fill('darkblue');
                 main_Stage.container().style.cursor = 'pointer';
                 writeMessage('Mouseout circle');
+                // this.zIndex(1);
                 
             });
 
@@ -153,7 +157,9 @@
        */
       circle.on('mouseup touchend', function () {
         writeMessage('Mouseup or touchend');
-      });
+        // enable left and right mouse buttons
+         Konva.dragButtons = [0, 2]; 
+        });
 
             circle.on('mouseout', function () {
                 this.opacity(0.9);

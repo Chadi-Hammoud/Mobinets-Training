@@ -1,0 +1,48 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Floor plan by chadi</title>
+        <!-- <script src="https://app.smplrspace.com/lib/smplr.js"></script>
+        <link href="https://app.smplrspace.com/lib/smplr.css" rel="stylesheet" /> -->
+        <style>
+            .container{
+                position: relative; aspect-ratio: 16/9;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <iframe
+                title="Sample space"
+                src="https://smplr.me/NMrmteC"
+                style="border: 0px none; width: 100%; height: 100%;position: absolute;"
+                scrolling="no"
+                allowfullscreen="no"
+                webkitallowfullscreen
+                mozallowfullscreen></iframe>
+
+        </div>
+
+        <script type="module">
+        import { loadSmplrJs } from "@smplrspace/smplr-loader";
+
+        loadSmplrJs()
+        .then((smplr) => {
+            /* enjoy a fully typed API and auto-completion */
+            const space = new smplr.Space({
+            spaceId: "5ebf20ab-fbbe-48b0-8495-2a25a1adf681",
+            clientToken: "pub_7e04f7e136dc47f9952476ebf421d315",
+            containerId: "container",
+            });
+            space.startViewer({
+            preview: true,
+            onReady: () => console.log("Viewer is ready"),
+            onError: (error) => console.error("Could not start viewer", error),
+            });
+        })
+        .catch((error) => console.error(error));
+</script>
+
+    </body>
+</html>

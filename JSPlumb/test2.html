@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Complex Code Flowchart Example</title>
+  <script src="./node_modules/jsplumb/dist/js/jsplumb.min.js"></script>
+  <style>
+    .element {
+      width: 120px;
+      height: 60px;
+      background-color: lightblue;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 60px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="element" id="start">Start</div>
+  <div class="element" id="condition">Check Condition</div>
+  <div class="element" id="trueBranch">True Branch</div>
+  <div class="element" id="falseBranch">False Branch</div>
+  <div class="element" id="endTrue">End (True)</div>
+  <div class="element" id="endFalse">End (False)</div>
+
+  <script>
+    jsPlumb.ready(function() {
+      // Establish connections
+      jsPlumb.connect({ source: "start", target: "condition" });
+      jsPlumb.connect({ source: "condition", target: "trueBranch", anchors: ["Bottom", "Top"] });
+      jsPlumb.connect({ source: "condition", target: "falseBranch", anchors: ["Bottom", "Top"] });
+      jsPlumb.connect({ source: "trueBranch", target: "endTrue", anchors: ["Bottom", "Top"] });
+      jsPlumb.connect({ source: "falseBranch", target: "endFalse", anchors: ["Bottom", "Top"] });
+
+      // Custom styling for connections
+      jsPlumb.Defaults.PaintStyle = { strokeWidth: 2, stroke: "black" };
+      jsPlumb.Defaults.EndpointStyle = { radius: 7, fill: "white", stroke: "black" };
+    });
+  </script>
+</body>
+</html>

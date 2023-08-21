@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Data Visualization with Hover Events</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <svg id="visualization" width="800" height="600"></svg>
+
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <script>
+    // Sample data (replace data)
+    const data = [
+      { type: "server", name: "Server A", x: 100, y: 200 },
+      { type: "server", name: "Server B", x: 300, y: 150 },
+      { type: "router", name: "Router 1", x: 500, y: 300 },
+      { type: "switch", name: "Switch 1", x: 300, y: 300 },
+    ];
+
+    const svg = d3.select("#visualization");
+
+    // Create circles for servers
+    const serverCircles = svg.selectAll(".server")
+      .data(data.filter(d => d.type === "server"))
+      .enter()
+      .append("circle")
+      .attr("class", "server")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", 20)
+      .style("fill", "blue")
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+      // Create circles for switch
+    const switchCircles = svg.selectAll(".switch")
+      .data(data.filter(d => d.type === "switch"))
+      .enter()
+      .append("circle")
+      .attr("class", "server")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", 20)
+      .style("fill", "red")
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+    // Create circles for routers
+    const routerCircles = svg.selectAll(".router")
+      .data(data.filter(d => d.type === "router"))
+      .enter()
+      .append("circle")
+      .attr("class", "router")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", 15)
+      .style("fill", "green")
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+    // Function to handle mouseover event
+    function handleMouseOver(event, d) {
+        console.log("Mouse Over");
+        console.log(d);
+      // Show tooltip (replace with your tooltip implementation)
+      const tooltip = d3.select("#tooltip");
+      tooltip.style("visibility", "visible");
+      tooltip.html(d.name) // Display the element's name
+        .style("left", event.pageX + "px")
+        .style("top", event.pageY + "px");
+    }
+
+    // Function to handle mouseout event
+    function handleMouseOut(event, d) {
+        console.log("Mouse out");
+        console.log(d);
+    }
+  </script>
+</body>
+</html>

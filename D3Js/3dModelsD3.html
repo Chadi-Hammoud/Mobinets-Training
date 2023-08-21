@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Data Visualization</title>
+    <style>
+    body { margin: 0; }
+  </style>
+    <script src="./node_modules/three/build/three.min.js"></script>
+
+  </head>
+  <body>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script> -->
+    <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // const geometry = new THREE.BoxGeometry();
+    // const material = new THREE.MeshBasicMaterial({color: d.type === "server" ? 0x00ff00 : (d.type === "switch" ? 0xff0000 : 0x0000ff)});
+    
+    // Sample data (replace this with your actual data)
+    const data = [
+      { type: "server", name: "Server A", x: 0, y: 0, z: 0 },
+      { type: "server", name: "Server B", x: 2, y: 0, z: -2 },
+      { type: "switch", name: "Switch A", x: 4, y: 0, z: -2 },
+      { type: "router", name: "Router A", x: 6, y: 0, z: -2 },
+      // Add more data here...
+    ];
+
+    const objects = [];
+
+    data.forEach(datum => {
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshBasicMaterial({color: datum.type === "server" ? 0x00ff00 : (datum.type === "switch" ? 0xff0000 : 0x0000ff)});
+      const cube = new THREE.Mesh(geometry, material);
+      cube.position.set(datum.x, datum.y, datum.z);
+      scene.add(cube);
+      objects.push(cube);
+    });
+
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    document.addEventListener("mousemove", event => {
+      // Calculate mouse position in normalized device coordinates
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      // Update the picking ray with the camera and mouse position
+      raycaster.setFromCamera(mouse, camera);
+
+      // Calculate objects intersecting the picking ray
+      const intersects = raycaster.intersectObjects(objects);
+
+      if (intersects.length > 0) {
+        const selectedObject = intersects[0].object;
+        console.log("Mouse Over", selectedObject);
+        
+      } else {
+        console.log("Mouse Out");
+      }
+    });
+
+    camera.position.z = 5;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+  </body>
+</html>

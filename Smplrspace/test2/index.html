@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2</title>
+      <!-- in the <head> section of your HTML -->
+<script src="https://app.smplrspace.com/lib/smplr.js"></script>
+<link href="https://app.smplrspace.com/lib/smplr.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div id="container"></div>
+
+  
+<!-- at the end of the <body> section of your HTML -->
+<script>
+  const space = new smplr.Space({
+    spaceId: "7d9cb58a-2fd1-43ee-9c0f-4254d78ec166",
+    clientToken: "pub_fc4b7f5e33bd49cf98912c56c404de8c",
+    containerId: "container",
+  });
+  space.startViewer({
+    preview: true,
+    onReady: () => {updateDataLayers();
+        console.log("Viewer is ready");},
+    onError: (error) => console.error("Could not start viewer", error),
+  });
+
+  function updateDataLayers() {
+    space.removeDataLayer('IT_Room');
+    space.addDataLayer({
+        id:"Servers",
+        type: 'furniture',
+        data: Servers,
+        tooltip: (d) => `${d.name} - ${d.available ? 'free' : 'occupied'}`,
+        color: (d) => (d.name == 'Desk1' ? '#50b268' : '#f75e56'),
+    });
+
+  }
+
+
+
+
+</script>
+
+
+</body>
+</html>

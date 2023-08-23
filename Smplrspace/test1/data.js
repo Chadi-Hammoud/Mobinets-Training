@@ -1,6 +1,6 @@
 export const office = [
     {
-        id: "Rooms",
+        groupName: "Rooms",
         layerType: "polygon",
         smplrUuid: "7397475f-7935-4f5a-8c8c-55f613b02dad",
         name: "Room1",

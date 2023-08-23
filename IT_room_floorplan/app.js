@@ -4,11 +4,11 @@ import { desks, rooms } from './data.js';
 let space;
 
 function initSpace(smplr) {
-    const space = new smplr.Space({
-            spaceId: "5ebf20ab-fbbe-48b0-8495-2a25a1adf681",
-            clientToken: "pub_7e04f7e136dc47f9952476ebf421d315",
-            containerId: "container",
-            });
+    space = new smplr.Space({
+        spaceId: "5ebf20ab-fbbe-48b0-8495-2a25a1adf681",
+        clientToken: "pub_7e04f7e136dc47f9952476ebf421d315",
+        containerId: "container",
+    });
     space.startViewer({
         preview: true,
         onReady: () => updateDataLayers(),

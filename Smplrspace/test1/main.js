@@ -9,8 +9,8 @@ loadSmplrJs("esm")
             containerId: "container",
         });
         space.startViewer({
-            preview: true,
-            mode: '2d' ,
+            preview: false,
+            mode: '3d' ,
             // allowModeChange: false,
             onReady: () => {
                 updateDataLayers();
@@ -29,14 +29,14 @@ loadSmplrJs("esm")
 
 function updateDataLayers() {
     // remove previous layers if any
-    space.removeDataLayer('Room 1');
+    space.removeDataLayer('office');
 
-    space.addDataLayer({
-        id: "Rooms",
-        type: 'furniture',
-        data: office,
-        color: (d) => (d.available ? '#50b268' : '#f75e56'),
-    })
+    // space.addDataLayer({
+    //     id: "office",
+    //     type: 'furniture',
+    //     data: office,
+    //     color: (d) => (d.available ? '#50b268' : '#f75e56'),
+    // })
     
     // space.addDataLayer({
     //     id: 'desks',
@@ -49,7 +49,7 @@ function updateDataLayers() {
     // });
 
     space.addDataLayer({
-        id: "Rooms",
+        id: "office",
         type: 'polygon',
         color:(d) => (d.available ? '#50b268' : '#f75e56'),
         alpha:0.5,

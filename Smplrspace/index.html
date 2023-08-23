@@ -18,36 +18,15 @@
     </head>
     <body>
         <div class="container">
-            <iframe
-                title="Sample space"
-                src="https://smplr.me/NMrmteC"
-                style="border: 0px none; width: 100%; height: 100%;position: absolute;"
-                scrolling="no"
-                allowfullscreen="no"
-                webkitallowfullscreen
+            <iframe title="Sample space - Smplrspace"
+                src="https://smplr.me/k6DRbpD"
+                style="border: 0px none; width: 100%; height: 100%;"
+                scrolling="no" allowfullscreen webkitallowfullscreen
                 mozallowfullscreen></iframe>
 
         </div>
 
-        <script type="module">
-        import { loadSmplrJs } from "@smplrspace/smplr-loader";
-
-        loadSmplrJs()
-        .then((smplr) => {
-            /* enjoy a fully typed API and auto-completion */
-            const space = new smplr.Space({
-            spaceId: "5ebf20ab-fbbe-48b0-8495-2a25a1adf681",
-            clientToken: "pub_7e04f7e136dc47f9952476ebf421d315",
-            containerId: "container",
-            });
-            space.startViewer({
-            preview: true,
-            onReady: () => console.log("Viewer is ready"),
-            onError: (error) => console.error("Could not start viewer", error),
-            });
-        })
-        .catch((error) => console.error(error));
-</script>
+        <script type="module" src="main.js"></script>
 
     </body>
 </html>

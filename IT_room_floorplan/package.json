@@ -1,0 +1,16 @@
+{
+  "name": "it_room_floorplan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@smplrspace/smplr-loader": "^2.8.4",
+    "esm": "^3.2.25"
+  }
+}

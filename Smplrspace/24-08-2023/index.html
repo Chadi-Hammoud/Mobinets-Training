@@ -72,21 +72,21 @@ console.log(space.getDataLayer(" 8f08beb8-2627-44d6-add4-19a380b55912"));
         id:"Servers",
         type: 'furniture',
         data: Servers,
-        tooltip: (d) => `${d.name} - ${d.layerType ? 'furniture' : 'occupied'}`,
-        color: (d) => (d.name == 'Server3' ? '#50b268' : '#f75e56'),
+        tooltip: (d) => `${d.name} - ${d.type} -${d.temprature}! ${d.temprature > 65 ? 'Hot Temp' : 'Normal Temp'}`,
+        color: (d) => `${d.temprature >= 65 ? '#f75e56' :'#50b268'}`,
     });
     space.addDataLayer({
         id:"Desk",
         type: 'furniture',
         data: Desk,
-        tooltip: (d) => `${d.name} - ${d.layerType ? 'furniture' : 'occupied'}`,
+        tooltip: (d) => `${d.name} - ${d.employee}`,
         color: (d) => (d.name == 'Desk2' ? '#03fc24' : '#f75e56'),
     });
     space.addDataLayer({
         id:"Laptop",
         type: 'furniture',
         data: Laptop,
-        tooltip: (d) => `${d.name} - ${d.layerType ? 'furniture' : 'occupied'}`,
+        tooltip: (d) => `${d.name} - ${d.employee}`,
         color: (d) => (d.name == 'Lap1' ? '#0398fc' : '#f75e56'),
     });
 

@@ -16,7 +16,7 @@
     <script type="module" src="./data.js"></script>
   
 <script type="module">
-    import {Servers, Desk, Laptop} from './data.js'
+    import {Servers, Desk, Laptop, Points, Rooms, Polyline} from './data.js'
   const space = new smplr.Space({
     spaceId: "7d9cb58a-2fd1-43ee-9c0f-4254d78ec166",
     clientToken: "pub_fc4b7f5e33bd49cf98912c56c404de8c",
@@ -47,7 +47,9 @@ space.startViewer({
 
 
 //   setTimeout(space.remove(), 1000);
-
+//////////////////////////////////////////////////////////
+// TO DO SEARCH
+//////////////////////////////////////////////////////////
 //   space.enablePickingMode({
 //   onPick: ({
 //     coordinates: {
@@ -89,6 +91,64 @@ console.log(space.getDataLayer(" 8f08beb8-2627-44d6-add4-19a380b55912"));
         tooltip: (d) => `${d.name} - ${d.employee}`,
         color: (d) => (d.name == 'Lap1' ? '#0398fc' : '#f75e56'),
     });
+
+
+    space.addDataLayer({
+        id: "Points",
+        type: 'point',
+        data: Points,
+        diameter: 1 ,
+        anchor: 'center',
+        color: "#fccb05",
+        alpha: 0.7,
+        tooltip: (d) => `${d.name}`,
+        // onDrag?: ({ data: object }) => void,
+        // onDrop?: ({ data: object, position: object }) => void
+        }) 
+
+
+
+////////////////////////////////////////////////////////////
+        // POLYGON ERROR
+//////////////////////////////////////////////////////////
+    // space.addDataLayer({
+    //     id: "Rooms",
+    //     type: 'polygon',
+    //     data: Rooms,
+    //     baseHeight: 0,
+    //     // height: 20,
+    //     // color: (d) => (d.name == 'ServerRoom' ? '#0398fc' : '#f75e56'),
+    //     // alpha: 0.5,
+    //     // onDrag?: ({ data: object }) => void,
+    //     // onDrop?: ({ data: object, coordinates: object[] }) => void,
+    //     // disableReshape: false,
+    //     // reshapeBoxColor?: string
+        //  })
+//////////////////////////////////////////////////////////
+
+
+
+
+
+//////////////////////////////////////////////////////////
+// POLYLINE EOORO TO FIX
+//////////////////////////////////////////////////////////
+
+// space.addDataLayer({
+//   id: "Polyline",
+//   type: 'polyline',
+//   data: Polyline,
+//   shape: 'pentagon',
+//   cap: true,
+//   scale: 10,
+//   stepSize: 0,
+//   color:"#000",
+//   alpha: 0.5,
+// //   onDrag?: ({ data: object }) => void,
+// //   onDrop?: ({ data: object, coordinates: object[] }) => void,
+// //   disableReshape?: boolean,
+// //   reshapeBoxColor?: string
+// })
 
   }
 </script>

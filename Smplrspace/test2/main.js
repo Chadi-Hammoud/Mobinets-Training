@@ -7,6 +7,7 @@ loadSmplrJs("esm")
             spaceId: "7d9cb58a-2fd1-43ee-9c0f-4254d78ec166",
             clientToken: "pub_fc4b7f5e33bd49cf98912c56c404de8c",
             containerId: "container",
+            disableErrorReporting:true,
         });
 
         space.startViewer({

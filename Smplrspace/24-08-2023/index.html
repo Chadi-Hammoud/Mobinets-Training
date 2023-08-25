@@ -111,19 +111,19 @@ console.log(space.getDataLayer(" 8f08beb8-2627-44d6-add4-19a380b55912"));
 ////////////////////////////////////////////////////////////
         // POLYGON ERROR
 //////////////////////////////////////////////////////////
-    // space.addDataLayer({
-    //     id: "Rooms",
-    //     type: 'polygon',
-    //     data: Rooms,
-    //     baseHeight: 0,
-    //     // height: 20,
-    //     // color: (d) => (d.name == 'ServerRoom' ? '#0398fc' : '#f75e56'),
-    //     // alpha: 0.5,
-    //     // onDrag?: ({ data: object }) => void,
-    //     // onDrop?: ({ data: object, coordinates: object[] }) => void,
-    //     // disableReshape: false,
-    //     // reshapeBoxColor?: string
-        //  })
+    space.addDataLayer({
+        id: "Rooms",
+        type: 'polygon',
+        data: Rooms,
+        baseHeight: 0,
+        height: 1.5,
+        color: (d) => (d.name == 'ServerRoom' ? '#0398fc' : '#f75e56'),
+        alpha: 0.5,
+        // onDrag?: ({ data: object }) => void,
+        // onDrop?: ({ data: object, coordinates: object[] }) => void,
+        // disableReshape: false,
+        // reshapeBoxColor?: string
+         })
 //////////////////////////////////////////////////////////
 
 
@@ -138,9 +138,9 @@ console.log(space.getDataLayer(" 8f08beb8-2627-44d6-add4-19a380b55912"));
 //   id: "Polyline",
 //   type: 'polyline',
 //   data: Polyline,
-//   shape: 'pentagon',
+//   shape: 'pentagon', 
 //   cap: true,
-//   scale: 10,
+//   scale: 0.5,
 //   stepSize: 0,
 //   color:"#000",
 //   alpha: 0.5,

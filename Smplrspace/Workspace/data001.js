@@ -278,7 +278,7 @@ export const Desk =
       layerType: "furniture",
       smplrUuid: "7e7d39f9-4161-4758-b00a-c44976bbccf4",
       name: "Desk35",
-      Employee: "Bassel",
+      Employee: "Bassem",
       furnitureId: "9d0279fe-0aac-4872-9829-ecf6bef84540",
     },
     {
@@ -286,7 +286,7 @@ export const Desk =
       layerType: "furniture",
       smplrUuid: "06a89607-8481-4dc6-83c8-8709339a8651",
       name: "Desk36",
-      Employee: "Bassel",
+      Employee: "Bassem",
       furnitureId: "0e739fa1-24d7-4f30-852f-910b1177778a",
     },
 ];

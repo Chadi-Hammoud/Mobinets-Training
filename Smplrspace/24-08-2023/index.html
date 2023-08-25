@@ -119,6 +119,7 @@ console.log(space.getDataLayer(" 8f08beb8-2627-44d6-add4-19a380b55912"));
         height: 1.5,
         color: (d) => (d.name == 'ServerRoom' ? '#0398fc' : '#f75e56'),
         alpha: 0.5,
+        tooltip: (d) => `${d.name}`,
         // onDrag?: ({ data: object }) => void,
         // onDrop?: ({ data: object, coordinates: object[] }) => void,
         // disableReshape: false,
@@ -144,6 +145,8 @@ space.addDataLayer({
   stepSize: 0,
   color:"#000",
   alpha: 0.5,
+  tooltip: (d) => `${d.name}`,
+
 //   onDrag?: ({ data: object }) => void,
 //   onDrop?: ({ data: object, coordinates: object[] }) => void,
 //   disableReshape?: boolean,

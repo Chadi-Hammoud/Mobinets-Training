@@ -4,7 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mobinets Workspace</title>
 
-        
+
         <!-- in the <head> section of your HTML -->
         <script src="https://app.smplrspace.com/lib/smplr.js"></script>
         <link href="https://app.smplrspace.com/lib/smplr.css" rel="stylesheet" />
@@ -66,16 +66,16 @@ space.startViewer({
         color: (d) => (d.ON ? '#0398fc' : '#f75e56'),
     });
 
-    // space.addDataLayer({
-    //     id: "Departments",
-    //     type: 'polygon',
-    //     data: Departments,
-    //     baseHeight: 0,
-    //     height: 1.5,
-    //     color: (d) => (d.name == 'Dev' ? '#0398fc' : '#5feb63'),
-    //     alpha: 0.5,
-    //     tooltip: (d) => `Dep: ${d.name}`,
-    // })
+    space.addDataLayer({
+        id: "Departments",
+        type: 'polygon',
+        data: Departments,
+        baseHeight: 0,
+        height: 1.5,
+        color: (d) => (d.name == 'CEO' ? '#0398fc' : (d.name == 'Seniors'? '#5feb63' : '#d15c5c')),
+        alpha: 0.5,
+        tooltip: (d) => `Dep: ${d.name}`,
+    })
 
 }
 </script>

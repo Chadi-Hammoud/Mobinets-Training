@@ -9,9 +9,9 @@ function Page ({ largeContainer, children }) {
 
   // ugly fix mantine SSR issue
   // const [forceLightTheme, setForceLightTheme] = useState(isDarkTheme)
-  // useEffect(() => {
-  //   setForceLightTheme(false)
-  // }, [])
+  useEffect(() => {
+    // setForceLightTheme(false)
+  }, [])
 
   return (
     <MantineProvider
@@ -69,7 +69,7 @@ function Wrapper ({ title, largeContainer, children }) {
   return (
     // <Layout title={title}>
       <Page largeContainer={largeContainer}>{children}</Page>
-    //  </Layout> 
+    // </Layout>
   )
 }
 

@@ -1,9 +1,7 @@
 import React from 'react'
-import {
-  Tabs as MantineTabs,
-  // Tab as MantineTab,
-  createStyles
-} from '@mantine/core'
+import {Tabs as MantineTabs} from '@mantine/core/cjs/Tabs/Tabs'
+import {Tab as MantineTab} from '@mantine/core/cjs/Tabs/Tab/Tab'
+import {createStyles} from '@mantine/core'
 
 const useStyles = createStyles(theme => ({
   tabsListWrapper: {
@@ -26,4 +24,4 @@ export const Tabs = props => {
   return <MantineTabs {...props} classNames={classes} />
 }
 
-// export const Tab = MantineTab
+export const Tab = MantineTab

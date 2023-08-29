@@ -4,7 +4,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Mobinets Workspace</title>
 
-
         <!-- in the <head> section of your HTML -->
         <script src="https://app.smplrspace.com/lib/smplr.js"></script>
         <link href="https://app.smplrspace.com/lib/smplr.css" rel="stylesheet" />
@@ -12,6 +11,9 @@
     </head>
     <body>
         <div id="container"></div>
+        <!-- <input type="button" onclick={remove}>Delete Dep</input> -->
+        <button onClick={remove}>Delete Dep</button>
+
         <script type="module" src="./data001.js"></script>
 
         <script type="module">
@@ -77,8 +79,12 @@ space.startViewer({
         tooltip: (d) => `Dep: ${d.name}`,
     })
 
+    console.log(space.getDataLayer("Departments")); 
+    const remove = ()=>{
+        space.removeDataLayer("Departments");
+        console.log("Dep removed");}   
+
 }
 </script>
-
-    </body>
+</body>
 </html>

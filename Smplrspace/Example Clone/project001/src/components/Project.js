@@ -4,9 +4,9 @@ import { Divider, Group, Space } from '@mantine/core'
 import { IoInformation, IoLogoGithub, IoReturnUpBack } from 'react-icons/io5'
 // import CodeBlock from '@theme/CodeBlock'
 
-import Page from '../Page/Page'
-import Button from '../Button/Button'
-import { Tabs } from './Tabs/Tabs'
+import Page from './Page'
+import Button from './Button'
+import { Tabs, Tab } from './Tabs'
 
 function Project ({ project, children }) {
   if (!project.published) {
@@ -64,7 +64,7 @@ function Project ({ project, children }) {
       <Space h='lg' />
       <Group align='baseline'>
         <Tabs initialTab={1} style={{ width: 'calc(100% - 16px)' }}>
-          {/* <Tab icon={<IoInformation />}> */}
+          <Tab icon={<IoInformation />}>
             <p>
               Note that the example projects are implemented with React. For
               vanilla Javascript, you would load the script and stylesheet like
@@ -85,11 +85,11 @@ function Project ({ project, children }) {
               <code>useReducer</code> are mechanisms to hold application state
               in React.
             </p>
-          {/* </Tab> */}
+          </Tab>
           {project.code.map(({ filename, lang, content }) => (
-            // <Tab key={filename} label={filename}>
+            <Tab key={filename} label={filename}>
               {/* <CodeBlock className={`language-${lang}`}>{content}</CodeBlock> */}
-            // </Tab>
+            </Tab>
           ))}
         </Tabs>
       </Group>

@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@smplrspace/smplr-loader": "^2.8.4",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
     "ramda": "^0.29.0"
   }
 }

@@ -11,6 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@mantine/core": "^6.0.19",
-    "ramda": "^0.29.0"
+    "chance": "^1.1.11",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "ramda": "^0.29.0",
+    "uuid": "^9.0.0",
+    "uuid4": "^2.0.3"
   }
 }

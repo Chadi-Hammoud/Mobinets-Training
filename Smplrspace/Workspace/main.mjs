@@ -106,6 +106,21 @@ const addPointData = (point) => {
         // console.log("point:" + point.x);
         points.push(point);
         console.log("Point was successfully added to Points");
+        console.log(points)
+        space.addDataLayer({
+            id: 'points',
+            type: 'point',
+            data: points,
+            diameter: 0.5,
+            anchor: 'bottom',
+            tooltip: d => d.x,
+            onDrop: ({ data, position }) =>
+                updatePoint({
+                    type: 'update',
+                    id: data.id,
+                    updates: { position }
+                })
+        })
 
 
     } catch (error) {
@@ -114,6 +129,37 @@ const addPointData = (point) => {
 
 }
 
+//////////////To Delete In case the following is works////////////////////////////////////////////////////////
+// export const updatePoint = (points, action)=>{
+//     if (!Array.isArray(points)) {
+//         console.error('points is not an array.');
+//         return points;
+//       }
+//     updatedList =  points.map(points =>points.id === action.id ? { ...points, ...action.updates } : points)
+
+//     // for(let i = 0; i< points.length ; i++){
+//     //     points[i].id == action.id ? points[i] = {...points[i], ...action.updates } : points;
+//     // }
+
+//     console.log(points);
+//     return points;
+// }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function updatePoint(action) {
+    console.log("action"+ action)
+    console.log("points: "+points);
+    for (let i = 0; i < points.length; i++) {
+        if (points[i].id === action.id) {
+            // Merge the updatedData with the existing object
+            points[i].position=action.updates.position;
+            console.log(points);
+            // return { ...points, ...action.updates };
+            return points;
+        }
+    }
+    return points; // Return the original object if no update is needed
+}
 
 export default space;
 export const remove = () => {
@@ -123,16 +169,42 @@ export const remove = () => {
 
 export const drawDataLayer = () => updateDataLayers();
 
+function generateSpecificID() {
+    const randomID = Math.floor(Math.random() * (1000 - 9999 + 1)) + 9999;
+    console.log(randomID);
+    return randomID;
+}
+
+
 export const addPoint = () => {
     space.enablePickingMode({
         onPick: ({ coordinates }) => {
-            console.log(coordinates);
-            let point= {
-                id: 10,
-                namePoint :"Point",
+            const pID = generateSpecificID();
+            // console.log(coordinates);
+            let point = {
+                id: pID,
+                namePoint: "Point",
                 position: coordinates
-              };
-            addPointData(point);
+            };
+            // addPointData(point);
+            points.push(point);
+            console.log("Point was successfully added to Points");
+            console.log(points)
+            space.addDataLayer({
+                id: 'points',
+                type: 'point',
+                data: points,
+                diameter: 0.5,
+                anchor: 'bottom',
+                tooltip: d => d.x,
+                onDrag: ({data})=>{console.log(data)},
+                onDrop: ({ data, position }) =>
+                    updatePoint({
+                        type: 'update',
+                        id: data.id,
+                        updates: { position }
+                    })
+            })
         }
     })
 }
@@ -169,7 +241,7 @@ export const showPoints = () => {
         //     id: data.id,
         //     updates: { position }
         //   })
-      })
+    })
     // space.addDataLayer({
     //     id: 'icons',
     //     type: 'icon',

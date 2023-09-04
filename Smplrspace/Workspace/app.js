@@ -7,7 +7,7 @@
 // import space from './main.js'
 // let points = [];
 
-import { drawDataLayer, remove, addPoint, showPoints  } from './main.mjs'
+import { drawDataLayer, remove, addPoint, showPoints, disablePick, removePoint, callOnClick  } from './main.mjs'
 
 
 document.getElementById('btn1').onclick = () => {
@@ -25,3 +25,16 @@ document.getElementById('btn3').onclick = () => {
 document.getElementById('btn4').onclick = () => {
   showPoints();
 }
+
+document.getElementById('btn5').onclick = () => {
+  disablePick();
+}
+
+document.getElementById('btn6').onclick = () => {
+  removePoint();
+}
+document.getElementById('btn7').onclick = () => {
+  callOnClick();
+}
+
+

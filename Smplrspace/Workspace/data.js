@@ -286,7 +286,5 @@
       name: "AC3",
       furnitureId: "bf6ac6ab-0640-40d6-8751-9397faa61123"
     },
-    {
-      groupName: ""
-    }
+    
   ]

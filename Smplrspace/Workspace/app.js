@@ -1,12 +1,3 @@
-// function myFunction() {
-//     alert("Hello from JavaScript!");
-//   }
-// import { evolve, map } from './node_modules/ramda';
-// import { Group } from './node_modules/@mantine/'
-
-// import space from './main.js'
-// let points = [];
-
 import { drawDataLayer, remove, addPoint, showPoints, disablePick, removePoint, callOnClick  } from './main.mjs'
 
 

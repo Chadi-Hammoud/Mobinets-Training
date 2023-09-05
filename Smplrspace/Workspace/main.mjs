@@ -31,14 +31,24 @@ let tempPoint;
 //     }
 // })
 //////////////////////////////
-export const callOnClick = ()=>{
+export const callOnClick = () => {
     space.addDataLayer({
-        // id:'point',
-        // type: 'point',
-        // data: [],
+        id: 'points',
+        type: 'point',
+        data: points,
         onClick: (data) => {
             tempPoint = data;
             console.log(tempPoint)
+        },
+        diameter: 0.5,
+        anchor: 'bottom',
+        tooltip: d => d.id,
+        onDrop: ({ data, position }) => {
+            dispatchPoint({
+                type: 'update',
+                id: data.id,
+                updates: { position }
+            });
         }
     })
 }
@@ -107,13 +117,17 @@ const addPointDataLayer = () => {
             console.log("Temp: " + JSON.stringify(tempPoint));
             // console.log(points);
         },
-        onDrop: ({ data, position }) =>
+        onDrop: ({ data, position }) => {
+            console.log("data: " + data);
+            console.log("position: " + position);
+
             // updatePoint({
             dispatchPoint({
                 type: 'update',
                 id: data.id,
                 updates: { position }
-            })
+            });
+        }
     })
 }
 
@@ -170,15 +184,16 @@ const generateSpecificID = () => {
 }
 
 
+
 export const addPoint = () => {
     space.enablePickingMode({
         onPick: ({ coordinates }) => {
-            const pID = generateSpecificID();
+            // const pID = generateSpecificID();
             // console.log(coordinates);
             dispatchPoint({
                 type: 'add',
                 point: {
-                    id: pID,
+                    id: generateSpecificID(),
                     namePoint: "Point",
                     // type: 'point',
                     position: coordinates
@@ -196,7 +211,7 @@ export const showPoints = () => {
         id: 'points',
         type: 'point',
         data: points,
-        onclick: (data) => callOnClick(),
+        onclick: () => callOnClick(),
         diameter: 0.5,
         anchor: 'bottom',
         tooltip: d => d.id,
@@ -233,16 +248,17 @@ export const disablePick = () => {
 
 
 function checkPtID(pt) {
-    return pt.id =tempPoint.id;
-  }
+    return pt.id = tempPoint.id;
+}
 
 export const removePoint = () => {
     let newPoints = points.filter(obj => obj.id !== tempPoint.id);
     console.log("tempPoint " + tempPoint);
     points = newPoints;
     console.log("Point " + tempPoint.id + " was removed successfully");
-    addPointDataLayer();
-    showPoints();
+
+    // showPoints();
+    // addPointDataLayer();
     callOnClick();
     // return points;
 }

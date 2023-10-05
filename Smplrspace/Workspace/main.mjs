@@ -157,7 +157,7 @@ const addPointData = (point) => {
 }
 
 function updatePoint(action) {
-    console.log("action" + action)
+    console.log("action" + JSON.stringify(action))
     console.log("points: " + points);
     for (let i = 0; i < points.length; i++) {
         if (points[i].id === action.id) {

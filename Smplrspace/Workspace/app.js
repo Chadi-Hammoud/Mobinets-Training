@@ -1,4 +1,4 @@
-import { drawDataLayer, remove, addPoint, showPoints, disablePick, removePoint, callOnClick  } from './main.mjs'
+import { drawDataLayer, remove, addPoint, showPoints, disablePick, removePoint, callOnClick,  addIcon } from './main.mjs'
 
 
 document.getElementById('btn1').onclick = () => {
@@ -26,6 +26,10 @@ document.getElementById('btn6').onclick = () => {
 }
 document.getElementById('btn7').onclick = () => {
   callOnClick();
+}
+
+document.getElementById('btn8').onclick = () => {
+  addIcon();
 }
 
 

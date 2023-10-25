@@ -118,8 +118,8 @@ const addPointDataLayer = () => {
             // console.log(points);
         },
         onDrop: ({ data, position }) => {
-            console.log("data: " + data);
-            console.log("position: " + position);
+            console.log("data: " + JSON.stringify(data));
+            console.log("position: " + JSON.stringify(position));
 
             // updatePoint({
             dispatchPoint({
@@ -261,6 +261,41 @@ export const removePoint = () => {
     // addPointDataLayer();
     callOnClick();
     // return points;
+}
+
+
+export const addIcon = () => {
+    space.addDataLayer({
+        id: "ICON",
+        type: 'icon',
+        data: [{
+            id: 25732,
+            position: {
+                elevation: 0.002000000095002008,
+                levelIndex: 0,
+                x: -13.363932241143681,
+                z: -12.063679434409908
+            },
+
+        }],
+        icon: {
+            url: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAMCAg4LCggICAgICAgICAgICAgKCAgICAgICAgHCAgICAcICAcIBwgICAgIBwoICAcICQkJCAgNDQoIDQgICQgBAwQEBgUGCgYGCg0NCg0ODQ8NDw0NDQ0NDQ0NDQ0NDw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDf/AABEIAFAAUAMBEQACEQEDEQH/xAAdAAAABwEBAQAAAAAAAAAAAAACAwUGBwgJBAAB/8QASxAAAgECAwIICAcMCwAAAAAAAgMBAAQFERITIgYHCBQhMTJBCSMzUWFicpMlQkNScZKiNXOCkZSho7GytMLSFjRTVVZjgYOz0dP/xAAcAQABBAMBAAAAAAAAAAAAAAABAAMEBwIFBgj/xAAzEQACAQMEAAMFBgcBAAAAAAAAAQIDBBEFEiExBkFREzI0YXEHIjORsvAkcqGxwdHhFv/aAAwDAQACEQMRAD8A1TpCPUhBc0M/ewJRz2Z18sb7sXH3m1/YmuB1mMHX7/eD119nCa0iG1+cv1MhSK0cZlqScz0zRfIse0XJK/JWn4Zw/wBt/wC7Orb6Wv4lFdeP1t0Sqv5f1I0oqw/M8a9SBRQeQp5PhUkmBywRJwO4kmI5tB4teXcIvjvJl8kTDA7Xm/NdYPXGxhmq58apvbkOrpohJdpCE3F8VBS2OcwVKUJG1pkILWAjqIjM5gQGI65zoe9ME8NNy4RlLyo+VJhtzijXWmIg9RJQG0BL9EGAmBDqNUa+jRv5ZVyOo6XKrW3I9DeB/FGm6bpsKdw3uy/XzfGRs4TjAOCGoYLFz8cZzitBUoOHDRe+narRvoboNfmKE1DSwbGHvPBNHJAweWYvalETIoB7jnzDsjUP22jW80uLdxkqv7SLlQ0qcM8txX15z/ZM0YiK75nkZ88iHj/DBaJGGyzM4mYgEub2evyK2ZVi6iRHq3CpnAGNpeJMzLQvdIjB6MveArX+eKizvYQ7ePqSKEvbLhHBxY8bNviFtF3aszCOholuGghHUQuH4kxHX06PTNbi7tJ2ctkka2xvoXlLKKi8p3wpScNuLnD8LswxK5UGnnZXQcyB+nPso2jLhaupmzYqdoDA8X5So0uFk2Hcdpltx08ft1it1dX15cHLLuVwduuWqtABQgAilO3buboeU7zoIE1noFccb189NvbsYtibVYiiJs7EChYCAeW5rtH7gB5RrKYnSyTaGoSoLbjgRcNxO6tjJynbImFmcASiGdfz09j9FTdS3jI2tjrt9YrdaSa/fzJE4HcohwsWN8KzSW6TAXpbHr6A7fuq0tbSYy5RZOi/aNfQli7efyNjeSDxcITYJv7W4XeziCwdzlcFs5X06Uq1+MAFnr1wzxu12mvKdyJ1naK3+pyPivxNU1erz7q6X+f9en1LCRFbWXKOEisLkb3Cjg0DoCWsuF7KZKCVcvtvi/H2DF649B51Hq1pU4OcuF5h9l7SS+6Q2+YiSgW3Br6wF1w+4KBD5hvZ4s2VTWq3K1Gf42DsbaE6MfwzP3g1xusw+3xbZyUqvMJvrVoR/aFavC2b7amF7s2V7K1uwjXpup6HmHQNQlRuVR9Sg0dOUDH05dywqoU3KbgXY1hqXqd1i3piOjpjvrOXAYrb2KDEZ59OmPPFKMxSlGQG3V5pmYjvmKaSZjhdN4OfErrKJGOmSkeme4Q3/wCSnM4DJwh08mwPgjOFhMwjEbYpmYtMVZs4mc9C7i2tXafebVn4dLduEsLkvFeXggJGZCADGZEUwIxHrFPRFDGAe/wQjw15TdlENtwuCIiHTDhWRIks98BPvmA7/J+nz6HW6darZShT7kSbevGnNOT6IyHjrtdUBDimJ6yhZbMPbOqYl4YvY0nWUM565OzWr0tnvf0Kb8X+F7W8skT8vdJT74tH8de99TeLRnkLTfjEUWu7XSWgpESXtFTHZKSAzD+CqQqeZf8ADpBHOOrLrCM+r4uqsDIVLe66pmImPNNIAdiGLZ9OQDPqRppReBxvA275syWc55UpPI3nJq14H7FJVhfCK7YJRbru1Mg8t0yTZ6nCBd5RmH14oMMh08YvGA3EGSx7ChY+TtRktkv8D5Rn+ZUSTIUmN5OEj1SMTE9002AEzBgyygYiPMO7S8sByRLxOfdPCpj+8bH96CvQGq/CSXyZRmm/GIWeWD4Me9dilzf4CpFzbXzDuWpO4RbMtntYZtARZsl7AzLaL2c7TfZVIz5yX9HpEXcHfBMY0yc2Rhlrq64bfayj8lQ79dYhJM4HeBcupmOfY3YojvG3tX3RfXcdpSCPK18Gfg6QKW45cXrQLZmubyywxYlrMD1nzS6YvsH4v5TR303LgbqvBIPF3yMeDyz1PssOcIiJ7VuPXF7pjUADBp0Wq9GsxjxnR6KUXkbhLJYzhUhJ4Q+1wFFuaN23G3sgUtKhMgNsbANksPF57nRO/WciRLoqFinB5ynrhlvcLGYKGyaWgIfM7dQ5EGQ5re/KBiIMojzVgIMuLwpiYkpmJpCKR8KOHLbdyJtGjbsWwW84mALYkG+Bhr9ire129zU2ld6DpSqQjXCsc5WWLEUkOP4tAzOcZXGj7ALVVdOnmr8izJtTko+gjM5V2L/4gxj8ubR2B3HZgvLZxpBal4/iBzHc4lXY/UettDYLebEclLjQnFcFwzE3gvnFyiYuchGB5xbtZbuLR8ntGKJmz7oPKmGPdkt8xH5g/VGhkG1BoLy6oiPoisUZIjflE2urDrj1SSX4mh/3TdQaqFP7Xqn6cqiEQ6Gd1IRQ/h1YTLJbnuqLKB85GoN//bDX9eu819ONyc74fls05ev/AEZ5DqnLMBnzzIgP260suHk6J03CKqBeIYIOkSFgSye0MkoRH2D2lN5HMDZvkZTMdGceadVLIcGyngw8Rj+jFlqKI0XWJDlM5dm9f/NURj7eCwQcY0zMRzC8jPT0ydh0CZaNf9encz74qO2MOtyO+2vBLskJd/ROf6qcRKQyuPafg29+9D/yBTcxuZTO3DqiohFDm91IBBfKj5KdzhsgQKfeoYpJMuVWzWJC406Gq0L2zF9gNntPKV2N1fq5IOl2LtoYZVu8ws4zgkuGfMSWj+2utZGe3s2MYuUhJuLWejcPP2SobkZYCx4NNYQgm2uWkU5QK0PaUl6mhdLchYNdPB88SRpwBNvjOHCDZvby5Qi6SBMBNwS9Bkg4mUSzSU7NnjPzVCJZZkeLO1yAeYWeSpzXHNlZAXa3dzcpAwduB8DkpIzt7ZCDZ2yWoFkftkERr/1zoIKGxx9F8G3mc5ZguP066bmNT6KcDUPDkQ1PIJnXQ+/HocxHzNBomp0YbSXuT4AyPozpzORY28nzmsfNj8VHcDAOA9GX0UMiwDpGZ6kIDFBCGPxv8DjurNtsgxWZyucyjdmAMD0+pnprCfI3Mrpc8Qd0sCNg24gHXO2kpLe09gF1qNRu1aR3DlCgqjwI7OLJueetGX0l/wCdcb/62CeGbV6HKfKP/9k=",
+            width: 104,
+            height: 142
+        },
+        width: 1,
+        onClick: (data) => {
+            console.log(data);
+            console.log("Temp: " + JSON.stringify(tempPoint));
+            // console.log(points);
+        },
+        onDrag: (data) => {
+            console.log(data);},
+        onDrop: ({ data, position })=>{
+            console.log(data);
+            console.log(position);
+        }
+    })
 }
 
 

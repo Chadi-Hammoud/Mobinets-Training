@@ -11,17 +11,27 @@
     </head>
     <body>
         <div id="container"></div>
-        <input type="button" value="Remove" id="btn1"/>
-        <input type="button" value="Add" id="btn2"/>
-        <input type="button" value="Add Point" id="btn3"/>
-        <input type="button" value="Console Point" id="btn4"/>
-        <input type="button" value="Disable Picking Mode" id="btn5"/>
-        <input type="button" value="Remove Point" id="btn6"/>
-        <input type="button" value="Select Point" id="btn7"/>
+        <input type="button" value="Remove" id="btn1" />
+        <input type="button" value="Add" id="btn2" />
+        <input type="button" value="Add Point" id="btn3" />
+        <input type="button" value="Console Point" id="btn4" />
+        <input type="button" value="Disable Picking Mode" id="btn5" />
+        <input type="button" value="Remove Point" id="btn6" />
+        <input type="button" value="Select Point" id="btn7" />
+        <input type="button" value="Add icon" id="btn8" />
 
         <script type="module" src="./app.js"></script>
         <script type="module" src="./data001.js"></script>
         <script type="module" src="./main.mjs"></script>
+
+        
+        <div oncontextmenu="doSomething(event)" style="width: 100px; height: 100px; background-color:blue ;">hi ib</div>
+        <script>
+        function doSomething(e) {
+            if (!e) var e = window.event;
+            console.log(e);
+        }
+        </script>
 
         <script type="module">
 
@@ -123,5 +133,5 @@
 // }
 </script>
 
-</body>
+    </body>
 </html>
